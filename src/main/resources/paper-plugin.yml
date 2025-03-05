@@ -1,0 +1,14 @@
+name: PortableInventories
+version: "${version}"
+main: me.gaminglounge.portableinventories.PortableInventories
+loader: me.gaminglounge.portableinventories.PortableInventoryLoader
+description:
+api-version: "1.21.4"
+authors:
+  - "Jon1Games"
+dependencies:
+  server:
+    ItemBuilder:
+      load: BEFORE
+      required: true
+      join-classpath: true

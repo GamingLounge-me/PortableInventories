@@ -1,0 +1,25 @@
+commands:
+  grindstone:
+    aliases:
+      - grindstone
+      - grind
+      - gs
+  smithing:
+    aliases:
+      - smith
+      - sm
+  stonecutter:
+    aliases:
+      - stonecutter
+      - stonecut
+      - sc
+  enderchest:
+    aliases:
+      - enderchest
+      - echest
+      - ec
+  workbench:
+    aliases:
+      - workbench
+      - wb
+      - work
