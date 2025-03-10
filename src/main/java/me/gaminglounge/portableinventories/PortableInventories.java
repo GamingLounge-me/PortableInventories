@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
 import me.gaminglounge.portableinventories.commands.PortableInventoriesCommand;
-import me.gaminglounge.portableinventories.listener.AddRevepie;
+import me.gaminglounge.portableinventories.listener.AddRecepie;
 
 public final class PortableInventories extends JavaPlugin {
 
@@ -22,7 +22,6 @@ public final class PortableInventories extends JavaPlugin {
             CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
 
         new PortableInventoriesCommand();
-
     }
 
     @Override
@@ -40,7 +39,7 @@ public final class PortableInventories extends JavaPlugin {
     public void listener() {
         PluginManager pm = Bukkit.getPluginManager();
 
-        pm.registerEvents(new AddRevepie(), this);
+        pm.registerEvents(new AddRecepie(), this);
     }
 
 }
