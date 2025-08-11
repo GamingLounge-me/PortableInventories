@@ -19,7 +19,7 @@ public class PortableInventoryLoader implements PluginLoader {
                 "https://repo1.maven.org/maven2/")
                 .build());
         resolver.addDependency(new Dependency(
-                new DefaultArtifact("dev.jorel:commandapi-bukkit-shade-mojang-mapped:9.7.0"),
+                new DefaultArtifact("dev.jorel:commandapi-bukkit-shade-mojang-mapped:10.1.2"),
                 null));
         classpathBuilder.addLibrary(resolver);
     }
