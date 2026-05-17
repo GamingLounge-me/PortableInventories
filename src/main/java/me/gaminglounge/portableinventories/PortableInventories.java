@@ -19,7 +19,7 @@ public final class PortableInventories extends JavaPlugin {
         new Events();
 
         if (!CommandAPI.isLoaded())
-            CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
+            CommandAPI.onLoad(new CommandAPIPaperConfig(this));
 
         new PortableInventoriesCommand();
     }
