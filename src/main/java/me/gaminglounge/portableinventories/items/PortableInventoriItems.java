@@ -7,15 +7,15 @@ import me.gaminglounge.itembuilder.ItemBuilder;
 
 public enum PortableInventoriItems {
     ENDERCHEST(new ItemBuilder(Material.ENDER_CHEST).setGlint(true)
-            .addRightInteractionEvent("portableinvs:open_enderchest").build()),
+        .addRightInteractionEvent("portableinvs:open_enderchest").build()),
     SMITHING(new ItemBuilder(Material.SMITHING_TABLE).setGlint(true)
-            .addRightInteractionEvent("portableinvs:open_smithing").build()),
+        .addRightInteractionEvent("portableinvs:open_smithing").build()),
     WORKBENCH(new ItemBuilder(Material.CRAFTING_TABLE).setGlint(true)
-            .addRightInteractionEvent("portableinvs:open_workbench").build()),
+        .addRightInteractionEvent("portableinvs:open_workbench").build()),
     GRINDSTONE(new ItemBuilder(Material.GRINDSTONE).setGlint(true)
-            .addRightInteractionEvent("portableinvs:open_grindstone").build()),
+        .addRightInteractionEvent("portableinvs:open_grindstone").build()),
     STONECUTTER(new ItemBuilder(Material.STONECUTTER).setGlint(true)
-            .addRightInteractionEvent("portableinvs:open_stonecutter").build());
+        .addRightInteractionEvent("portableinvs:open_stonecutter").build());
 
     public ItemStack item;
 

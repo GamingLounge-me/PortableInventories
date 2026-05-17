@@ -5,7 +5,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import dev.jorel.commandapi.CommandAPI;
-import dev.jorel.commandapi.CommandAPIBukkitConfig;
+import dev.jorel.commandapi.CommandAPIPaperConfig;
 import me.gaminglounge.portableinventories.commands.PortableInventoriesCommand;
 import me.gaminglounge.portableinventories.listener.AddRecepie;
 
@@ -16,10 +16,13 @@ public final class PortableInventories extends JavaPlugin {
     @Override
     public void onLoad() {
         INSTANCE = this;
+        this.saveDefaultConfig();
+        new Update_Config();
+
         new Events();
 
         if (!CommandAPI.isLoaded())
-            CommandAPI.onLoad(new CommandAPIBukkitConfig(this));
+            CommandAPI.onLoad(new CommandAPIPaperConfig(this));
 
         new PortableInventoriesCommand();
     }

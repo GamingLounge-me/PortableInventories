@@ -1,9 +1,27 @@
 plugins {
     id 'java'
+    id 'me.qoomon.git-versioning' version '6.4.4'
+    id 'maven-publish'
 }
 
 group = 'me.gaminglounge'
-version = '0.0'
+version = '0.0.0'
+gitVersioning.apply{
+    refs {
+        tag('v(?<version>.*)') {
+            version = '${ref.version}'
+        }
+        tag('dev(?<version>.*)') {
+            version = 'dev${ref.version}'
+        }
+        branch('.*') {
+            version = '${ref}-${commit.short}-SNAPSHOT'
+        }
+    }
+    rev {
+        version = '${commit}'
+    }
+}
 
 repositories {
     mavenCentral()
@@ -15,15 +33,19 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        name "gamingloungeMeGaminglounge"
+        url "https://maven.gaminglounge.me/gaminglounge"
+    }
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
-    compileOnly files("build/libs/ItemBuilder-0.0.jar")
-    implementation ("dev.jorel:commandapi-bukkit-shade-mojang-mapped:9.7.0")
+    compileOnly "io.papermc.paper:paper-api:26.1.2.build.+"
+    compileOnly "me.gaminglounge:item-builder:1.1.0"
+    implementation "dev.jorel:commandapi-paper-shade:11.2.0"
 }
 
-def targetJavaVersion = 21
+def targetJavaVersion = 25
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -47,5 +69,31 @@ processResources {
     filteringCharset 'UTF-8'
     filesMatching('paper-plugin.yml') {
         expand props
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+        maven {
+            name = "SERVERNAME_REPOSITORYNAME"
+            url = uri(project.findProperty("MAVEN_URL") ?: System.getenv("MAVEN_URL"))
+            credentials {
+                username = project.findProperty("MAVEN_USERNAME") ?: System.getenv("MAVEN_USERNAME")
+                password = project.findProperty("MAVEN_PASSWORD") ?: System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
     }
 }
