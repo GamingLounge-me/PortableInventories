@@ -16,6 +16,9 @@ public final class PortableInventories extends JavaPlugin {
     @Override
     public void onLoad() {
         INSTANCE = this;
+        this.saveDefaultConfig();
+        new Update_Config();
+
         new Events();
 
         if (!CommandAPI.isLoaded())
