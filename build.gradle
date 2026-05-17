@@ -1,9 +1,26 @@
 plugins {
     id 'java'
+    id 'me.qoomon.git-versioning' version '6.4.4'   
 }
 
 group = 'me.gaminglounge'
-version = '0.0'
+version = '0.0.0'
+gitVersioning.apply{
+    refs {
+        tag('v(?<version>.*)') {
+            version = '${ref.version}'
+        }
+        tag('dev(?<version>.*)') {
+            version = 'dev${ref.version}'
+        }
+        branch('.*') {
+            version = '${ref}-${commit.short}-SNAPSHOT'
+        }
+    }
+    rev {
+        version = '${commit}'
+    }
+}
 
 repositories {
     mavenCentral()
