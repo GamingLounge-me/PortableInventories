@@ -33,6 +33,10 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        name "gamingloungeMeGaminglounge"
+        url "https://maven.gaminglounge.me/gaminglounge"
+    }
 }
 
 dependencies {
