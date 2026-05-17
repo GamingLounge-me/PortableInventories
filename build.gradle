@@ -84,7 +84,7 @@ publishing {
         }
         maven {
             name = "SERVERNAME_REPOSITORYNAME"
-            url = uri(project.findProperty("MAVEN_URL") ?: System.getenv("MAVEN_URL"))
+            url = uri("https://maven.gaminglounge.me/gaminglounge")
             credentials {
                 username = project.findProperty("MAVEN_USERNAME") ?: System.getenv("MAVEN_USERNAME")
                 password = project.findProperty("MAVEN_PASSWORD") ?: System.getenv("MAVEN_PASSWORD")
