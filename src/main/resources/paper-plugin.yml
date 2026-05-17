@@ -3,7 +3,7 @@ version: "${version}"
 main: me.gaminglounge.portableinventories.PortableInventories
 loader: me.gaminglounge.portableinventories.PortableInventoryLoader
 description:
-api-version: "1.21.4"
+api-version: "26.1.2"
 authors:
   - "Jon1Games"
 dependencies:

@@ -18,9 +18,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
-    compileOnly files("build/libs/ItemBuilder-0.0.jar")
-    implementation ("dev.jorel:commandapi-bukkit-shade-mojang-mapped:9.7.0")
+    compileOnly "io.papermc.paper:paper-api:26.1.2.build.+"
+    compileOnly "me.gaminglounge:item-builder:1.1.0"
+    implementation "dev.jorel:commandapi-paper-shade:11.2.0"
 }
 
 def targetJavaVersion = 21
