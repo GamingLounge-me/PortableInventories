@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'me.qoomon.git-versioning' version '6.4.4'   
+    id 'me.qoomon.git-versioning' version '6.4.4'
+    id 'maven-publish'
 }
 
 group = 'me.gaminglounge'
@@ -64,5 +65,31 @@ processResources {
     filteringCharset 'UTF-8'
     filesMatching('paper-plugin.yml') {
         expand props
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+        maven {
+            name = "SERVERNAME_REPOSITORYNAME"
+            url = uri(project.findProperty("MAVEN_URL") ?: System.getenv("MAVEN_URL"))
+            credentials {
+                username = project.findProperty("MAVEN_USERNAME") ?: System.getenv("MAVEN_USERNAME")
+                password = project.findProperty("MAVEN_PASSWORD") ?: System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
     }
 }
